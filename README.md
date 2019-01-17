@@ -1,4 +1,4 @@
-# Books to Read
+# Famous Artists
 
 ## Setup
 
