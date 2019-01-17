@@ -6,10 +6,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      books: [
-        { id: 1, title: 'Jurassic Park', read: false },
-        { id: 2, title: 'Timeline', read: false },
-      ]
+      artists: [],
     }
   }
 
@@ -17,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Books to Read</h1>
+          <h1 className="App-title">Famous Artists</h1>
         </header>
         <br/>
 
