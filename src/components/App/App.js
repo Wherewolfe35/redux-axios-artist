@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
+import ArtistList from './../ArtistList/ArtistList.js';
 
 class App extends Component {
+  // Called when the (App) component is created
   constructor(props) {
     super(props);
 
     this.state = {
       artists: [],
     }
+  }
+  // DOM is ready
+  componentDidMount() { // react Component method
+    this.refreshArtists();
+  }
+
+  refreshArtists = () => {
+    // just like $.ajax()
+    axios({
+      method: 'GET',
+      url: '/artist'
+    }).then((response) => {
+      console.log(response);
+      // response.data will be the array of artists
+      this.setState({
+        artists: response.data,
+      });
+    });
   }
 
   render() {
@@ -16,8 +37,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Famous Artists</h1>
         </header>
+        {JSON.stringify(this.state)}
         <br/>
-
+        <ArtistList refreshArtists={this.refreshArtists} artistList={this.state.artists} />
       </div>
     );
   }
