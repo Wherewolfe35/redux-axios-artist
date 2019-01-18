@@ -1,3 +1,5 @@
+// artist.data.js
+
 const artists = [
     { id: 0, name: 'Picasso' },
     { id: 1, name: 'Van Gogh' },

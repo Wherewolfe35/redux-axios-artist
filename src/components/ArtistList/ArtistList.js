@@ -1,3 +1,5 @@
+// ArtistList.js
+
 import React, { Component } from 'react';
 import ArtistListItem from './ArtistListItem.js';
 
