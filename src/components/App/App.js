@@ -37,7 +37,6 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Famous Artists</h1>
         </header>
-        {JSON.stringify(this.state)}
         <br/>
         <ArtistList refreshArtists={this.refreshArtists} artistList={this.state.artists} />
       </div>

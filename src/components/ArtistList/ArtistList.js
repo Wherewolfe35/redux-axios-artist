@@ -15,7 +15,6 @@ class ArtistList extends Component {
     render() {
         return (
             <div>
-                {JSON.stringify(this.props)}
                 <table>
                     <tbody>
                         {this.createArtistList()}
