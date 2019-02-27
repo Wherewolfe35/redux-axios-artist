@@ -7,13 +7,10 @@ import ArtistList from './../ArtistList/ArtistList.js';
 
 class App extends Component {
   // Called when the (App) component is created
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      artists: [],
-    }
+  state = {
+    artists: [],
   }
+  
   // DOM is ready
   componentDidMount() { // react Component method
     this.refreshArtists();

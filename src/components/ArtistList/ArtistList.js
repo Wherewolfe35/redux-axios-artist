@@ -1,7 +1,7 @@
 // ArtistList.js
 
 import React, { Component } from 'react';
-import ArtistListItem from './ArtistListItem.js';
+import ArtistListItem from '../ArtistListItem/ArtistListItem';
 
 class ArtistList extends Component {
     createArtistList() {
