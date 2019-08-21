@@ -1,9 +1,10 @@
 // App.js
 
 import React, { Component } from 'react';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
-import ArtistList from './../ArtistList/ArtistList.js';
+import Home from "../Home/Home";
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -35,13 +36,22 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to='/'>List of Artists</Link>
+            </li>
+          </ul>
+        </nav>
         <header className="App-header">
           <h1 className="App-title">Famous Artists</h1>
         </header>
         <br/>
-        <ArtistList refreshArtists={this.refreshArtists} />
+          <Route exact path='/' component={Home} />
       </div>
+      </Router>
     );
   }
 }

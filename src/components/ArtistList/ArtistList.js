@@ -9,7 +9,7 @@ class ArtistList extends Component {
         let artistListForDom = [];
         for (let i = 0; i < this.props.reduxStore.artistReducer.length; i += 1) {
             let artist = this.props.reduxStore.artistReducer[i];
-            let artistRow = (<ArtistListItem key={i} refreshArtists={this.props.refreshArtists} artist={artist} />);
+            let artistRow = (<ArtistListItem key={i} artist={artist} />);
             artistListForDom.push(artistRow);
         }
         return artistListForDom;

@@ -9,9 +9,20 @@ class ArtistListItem extends Component {
             method: 'DELETE',
             url: `/artist/${this.props.artist.id}`
         }).then((response) => {
-            this.props.refreshArtists();
+            axios({
+                method: 'GET',
+                url: '/artist'
+            }).then((response) => {
+                console.log(response);
+                // response.data will be the array of artists
+                let action = {
+                    type: 'SET_ARTISTS',
+                    payload: response.data,
+                }
+                this.props.dispatch(action);
         });
-    }
+    })
+}
     render() {
         return (
             <tr>

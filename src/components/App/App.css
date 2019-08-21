@@ -33,3 +33,9 @@ th {
     background-color: #353535;
     color: #B2B2B2;
 }
+
+ul{
+  display: flex;
+  align-items: flex-start;
+  padding-left: 10px;
+}
