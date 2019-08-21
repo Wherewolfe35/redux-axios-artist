@@ -6,13 +6,14 @@ import './App.css';
 import axios from 'axios';
 import Home from "../Home/Home";
 import { connect } from "react-redux";
+import ArtistForm from '../ArtistForm/ArtistForm';
 
 class App extends Component {
   // Called when the (App) component is created
   state = {
     artists: [],
   }
-  
+
   // DOM is ready
   componentDidMount() { // react Component method
     this.refreshArtists();
@@ -37,20 +38,24 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <Link to='/'>List of Artists</Link>
-            </li>
-          </ul>
-        </nav>
-        <header className="App-header">
-          <h1 className="App-title">Famous Artists</h1>
-        </header>
-        <br/>
+        <div className="App">
+          <nav>
+            <ul>
+              <li>
+                <Link to='/'>List of Artists</Link>
+              </li>
+              <li>
+                <Link to='/add-artist'>Add Artist</Link>
+              </li>
+            </ul>
+          </nav>
+          <header className="App-header">
+            <h1 className="App-title">Famous Artists</h1>
+          </header>
+          <br />
           <Route exact path='/' component={Home} />
-      </div>
+          <Route path='/add-artist' component={ArtistForm} />
+        </div>
       </Router>
     );
   }

@@ -14,6 +14,8 @@ const artistReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_ARTISTS':
             return action.payload;
+        case 'ADD_ARTIST':
+            return [...state, action.payload];
         default:
             return state;
     }

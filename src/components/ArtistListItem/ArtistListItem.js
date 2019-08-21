@@ -9,6 +9,7 @@ class ArtistListItem extends Component {
             method: 'DELETE',
             url: `/artist/${this.props.artist.id}`
         }).then((response) => {
+            console.log(response);
             axios({
                 method: 'GET',
                 url: '/artist'

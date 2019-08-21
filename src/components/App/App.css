@@ -39,3 +39,8 @@ ul{
   align-items: flex-start;
   padding-left: 10px;
 }
+
+li {
+  display: inline;
+  padding-right: 5px;
+}
