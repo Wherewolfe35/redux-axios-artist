@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ArtistList from './../ArtistList/ArtistList.js';
+import { connect } from "react-redux";
 
 class App extends Component {
   // Called when the (App) component is created
@@ -24,9 +25,11 @@ class App extends Component {
     }).then((response) => {
       console.log(response);
       // response.data will be the array of artists
-      this.setState({
-        artists: response.data,
-      });
+      let action = {
+        type: 'SET_ARTISTS',
+        payload: response.data,
+      }
+      this.props.dispatch(action);
     });
   }
 
@@ -37,10 +40,10 @@ class App extends Component {
           <h1 className="App-title">Famous Artists</h1>
         </header>
         <br/>
-        <ArtistList refreshArtists={this.refreshArtists} artistList={this.state.artists} />
+        <ArtistList refreshArtists={this.refreshArtists} />
       </div>
     );
   }
 }
 
-export default App;
+export default connect()(App);

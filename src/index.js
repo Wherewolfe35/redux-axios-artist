@@ -11,7 +11,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 const artistReducer = (state = [], action) => {
-    return state;
+    switch (action.type) {
+        case 'SET_ARTISTS':
+            return action.payload;
+        default:
+            return state;
+    }
 }
 
 // The store is the big JavaScript Object that holds all of the information for our application
