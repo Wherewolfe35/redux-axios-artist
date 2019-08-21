@@ -6,12 +6,8 @@ import { connect } from "react-redux";
 
 class ArtistList extends Component {
     createArtistList() {
-        let artistListForDom = [];
-        for (let i = 0; i < this.props.reduxStore.artistReducer.length; i += 1) {
-            let artist = this.props.reduxStore.artistReducer[i];
-            let artistRow = (<ArtistListItem key={i} artist={artist} />);
-            artistListForDom.push(artistRow);
-        }
+        let artistListForDom = this.props.reduxStore.artistReducer
+        .map(artist => <ArtistListItem key={artist.id} artist={artist} />);
         return artistListForDom;
     }
 
