@@ -6,9 +6,11 @@ import { connect } from "react-redux";
 
 class ArtistListItem extends Component {
     deleteArtist = () => {
+        console.log(this.props.artist.id);
+        
         axios({
             method: 'DELETE',
-            url: `/artist/${this.props.artist.id}`
+            url: `/artist/${this.props.artist.id}`,
         }).then((response) => {
             console.log(response);
             axios({
