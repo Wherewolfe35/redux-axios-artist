@@ -4,9 +4,9 @@ import axios from 'axios';
 
 class ArtistForm extends Component {
   state = { 
-    name: '',
-    birthyear: '',
-    deathyear: ''
+    name: this.props.reduxStore.artistInput.name,
+    birthyear: this.props.reduxStore.artistInput.birthyear,
+    deathyear: this.props.reduxStore.artistInput.deathyear
    }
 
    handleChange = (event)=>{
@@ -21,6 +21,24 @@ class ArtistForm extends Component {
    }
 
    yearChange = (event, propertyName) => {
+     switch (propertyName) {
+       case 'birthyear':
+         let action = {
+           type: 'BYEAR_INPUT',
+           payload: event.target.value
+         };
+         this.props.dispatch(action);
+         break;
+       case 'deathyear':
+         let faction = {
+           type: 'DYEAR_INPUT',
+           payload: event.target.value
+         };
+         this.props.dispatch(faction);
+         break;
+       default:
+         break;
+     }
      this.setState({
        ...this.state,
        [propertyName]: event.target.value
@@ -64,13 +82,13 @@ class ArtistForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <input placeholder='Name'
         onChange={this.handleChange}
-        value={this.props.reduxStore.artistInput}/>
+        value={this.props.reduxStore.artistInput.name}/>
         <input placeholder="birth(yyyy)" 
         onChange={(event)=>this.yearChange(event, 'birthyear')}
-        value={this.state.birthyear}/>
+          value={this.props.reduxStore.artistInput.birthyear}/>
         <input placeholder="death(yyyy)" 
           onChange={(event) => this.yearChange(event, 'deathyear')}
-          value={this.state.deathyear}/>
+          value={this.props.reduxStore.artistInput.deathyear}/>
         <button>Add Artist</button>
       </form>
      );

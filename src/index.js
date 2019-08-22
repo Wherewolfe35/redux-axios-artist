@@ -21,11 +21,15 @@ const artistReducer = (state = [], action) => {
     }
 }
 
-const artistInput = (state = [], action) => {
+const artistInput = (state = {name: '', birthyear: '', deathyear:''}, action) => {
     if(action.type === 'ARTIST_INPUT'){
-        return action.payload;
+        return {birthyear: state.birthyear, deathyear: state.deathyear, name: action.payload};
     } else if(action.type === 'CLEAR'){
-        return [];
+        return { name: '', birthyear: '', deathyear: '' };
+    } else if(action.type === 'BYEAR_INPUT'){
+        return { name: state.name, deathyear: state.deathyear, birthyear: action.payload };
+    } else if(action.type === 'DYEAR_INPUT'){
+        return { name: state.name, birthyear: state.birthyear, deathyear: action.payload };
     }
     return state;
 }
