@@ -27,10 +27,12 @@ class ArtistListItem extends Component {
         });
     })
 }
+
     render() {
         return (
             <tr>
-                <td>{this.props.artist.name}</td>
+                <td>{this.props.artist.name} <span></span>
+                ({this.props.artist.birthyear}-{this.props.artist.deathyear})</td>
                 <td><button onClick={this.deleteArtist}>DELETE</button></td>
             </tr>
         );

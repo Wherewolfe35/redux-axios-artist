@@ -5,8 +5,8 @@ import axios from 'axios';
 class ArtistForm extends Component {
   state = { 
     name: '',
-    birthyear: 1991,
-    deathyear: 'present'
+    birthyear: '',
+    deathyear: ''
    }
 
    handleChange = (event)=>{
@@ -17,6 +17,13 @@ class ArtistForm extends Component {
      this.props.dispatch(action);
      this.setState({
        name: event.target.value
+     })
+   }
+
+   yearChange = (event, propertyName) => {
+     this.setState({
+       ...this.state,
+       [propertyName]: event.target.value
      })
    }
 
@@ -35,13 +42,19 @@ class ArtistForm extends Component {
            payload: response.data,
          }
          this.props.dispatch(action);
+         action = {
+           type: 'CLEAR',
+         }
+         this.props.dispatch(action);
        });
      }).catch((error)=>{
        console.log(error);
      });
-    // this.setState({
-    //   name: ''
-    // })
+    this.setState({
+      ...this.state,
+      birthyear: '',
+      deathyear: ''
+    })
    }
 
   render() { 
@@ -52,6 +65,12 @@ class ArtistForm extends Component {
         <input placeholder='Name'
         onChange={this.handleChange}
         value={this.props.reduxStore.artistInput}/>
+        <input placeholder="birth(yyyy)" 
+        onChange={(event)=>this.yearChange(event, 'birthyear')}
+        value={this.state.birthyear}/>
+        <input placeholder="death(yyyy)" 
+          onChange={(event) => this.yearChange(event, 'deathyear')}
+          value={this.state.deathyear}/>
         <button>Add Artist</button>
       </form>
      );

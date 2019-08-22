@@ -24,6 +24,8 @@ const artistReducer = (state = [], action) => {
 const artistInput = (state = [], action) => {
     if(action.type === 'ARTIST_INPUT'){
         return action.payload;
+    } else if(action.type === 'CLEAR'){
+        return [];
     }
     return state;
 }
