@@ -5,9 +5,16 @@ import axios from 'axios';
 class ArtistForm extends Component {
   state = { 
     name: '',
+    birthyear: 1991,
+    deathyear: 'present'
    }
 
    handleChange = (event)=>{
+     let action = {
+       type: 'ARTIST_INPUT',
+       payload: event.target.value
+     }
+     this.props.dispatch(action);
      this.setState({
        name: event.target.value
      })
@@ -32,21 +39,29 @@ class ArtistForm extends Component {
      }).catch((error)=>{
        console.log(error);
      });
-    this.setState({
-      name: ''
-    })
+    // this.setState({
+    //   name: ''
+    // })
    }
 
   render() { 
+    console.log(this.state);
+    
     return ( 
       <form onSubmit={this.handleSubmit}>
         <input placeholder='Name'
         onChange={this.handleChange}
-        value={this.state.name}/>
+        value={this.props.reduxStore.artistInput}/>
         <button>Add Artist</button>
       </form>
      );
   }
 }
- 
-export default connect()(ArtistForm);
+
+const storeToProps = (reduxStore) =>{
+  return {
+    reduxStore
+  }
+}
+
+export default connect(storeToProps)(ArtistForm);

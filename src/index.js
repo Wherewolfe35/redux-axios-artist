@@ -21,10 +21,18 @@ const artistReducer = (state = [], action) => {
     }
 }
 
+const artistInput = (state = [], action) => {
+    if(action.type === 'ARTIST_INPUT'){
+        return action.payload;
+    }
+    return state;
+}
+
 // The store is the big JavaScript Object that holds all of the information for our application
 const storeInstance = createStore(
     combineReducers({
         artistReducer,
+        artistInput
     }),
     applyMiddleware(logger),
 );
